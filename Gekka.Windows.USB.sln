@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32602.291
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gekka.Windows.USB", "Gekka.Windows.USB\Gekka.Windows.USB.csproj", "{74FCB0C2-5CB0-48D3-A837-DAD816A9B885}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfDemo", "WpfDemo\WpfDemo.csproj", "{C0780600-3EE1-47C9-A698-C6D59E2E5ADC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74FCB0C2-5CB0-48D3-A837-DAD816A9B885}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74FCB0C2-5CB0-48D3-A837-DAD816A9B885}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74FCB0C2-5CB0-48D3-A837-DAD816A9B885}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74FCB0C2-5CB0-48D3-A837-DAD816A9B885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0780600-3EE1-47C9-A698-C6D59E2E5ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0780600-3EE1-47C9-A698-C6D59E2E5ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0780600-3EE1-47C9-A698-C6D59E2E5ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0780600-3EE1-47C9-A698-C6D59E2E5ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {573A48FD-8552-4220-AD3F-E183966BAA10}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,80 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="400"
+        xmlns:i="clr-namespace:Gekka.Windows.USB.Input;assembly=Gekka.Windows.USB"
+        xmlns:hid="clr-namespace:Gekka.Windows.USB.Input.HID;assembly=Gekka.Windows.USB">
+    <Window.Resources>
+        <Style TargetType="{x:Type ItemsControl}">
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate DataType="{x:Type hid:IButtonItem}" x:Key="buttonsTemplate">
+            <ItemsControl ItemsSource="{Binding Path=Values}" >
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox IsHitTestVisible="False"
+                                  IsChecked="{Binding Path=Value, Mode=OneWay}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type hid:IValueItem}" x:Key="valuesTemplate">
+            <Border BorderBrush="Black" BorderThickness="1" MinWidth="30"  Margin="1,0">
+                <StackPanel>
+                    <Label Content="{Binding Path=Usage,Mode=OneTime}"  HorizontalAlignment="Center"/>
+                    <Label Content="{Binding Path=Values[0].Value,Mode=OneWay}" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </Window.Resources>
+    
+    <Grid>
+        <ListBox ItemsSource="{Binding Path=Devices}" x:Name="listBox" >
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type hid:HIDInputData}">
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="2" >
+                        <StackPanel Margin="2">
+                            <TextBlock Text="{Binding Path=DeviceName}" TextWrapping="Wrap"/>
+
+                            <GroupBox Header="Button">
+                                <ItemsControl ItemsSource="{Binding Path=InputButtons}"
+                                              ItemTemplate="{StaticResource buttonsTemplate}"/>
+                            </GroupBox>
+
+                            <GroupBox Header="Value">
+                                <ItemsControl ItemsSource="{Binding Path=InputValues}"
+                                              ItemTemplate="{StaticResource valuesTemplate}"/>
+                            </GroupBox>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ListBox>
+
+        <TextBlock Text="Wait Input" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=listBox, Path=Items.Count}" Value="0" >
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+    </Grid>
+</Window>
